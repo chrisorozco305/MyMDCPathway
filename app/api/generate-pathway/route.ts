@@ -42,27 +42,36 @@ The pathway must follow this structure and include ALL relevant steps:
 
 SPECIFIC REQUIREMENTS:
 
-1. MDC PROGRAM SELECTION:
-   - When selecting an MDC program, use your knowledge of programs listed on MDC's official program pages:
-     * Associate Programs: https://www.mdc.edu/academics/programs/associate.aspx (includes both A.A. and A.S.)
-     * Bachelor Programs: https://www.mdc.edu/academics/programs/bachelor.aspx
-     * Certificate Programs: https://www.mdc.edu/academics/programs/certificate.aspx
-   - CONSIDER ALL PROGRAM TYPES when determining the best pathway:
-     * Associate of Science (A.S.) - Often better for technical careers (e.g., Nursing, Engineering Technology, Computer Science)
-     * Associate of Arts (A.A.) - Better for transfer-oriented paths (e.g., Pre-Med, Pre-Law, General Education)
-     * Certificate Programs - Can be excellent starting points for specific careers or can be combined with degrees
-     * Bachelor's Programs - Use when MDC offers a bachelor's degree that directly leads to the career (e.g., B.S. in Nursing, B.S. in Information Systems Technology)
-   - For ANY step with type 'degree', the 'name' field MUST contain the full, official program title, such as:
+1. MDC PROGRAM SELECTION - CRITICAL REQUIREMENTS:
+   - YOU MUST ONLY USE ACTUAL MDC PROGRAMS THAT EXIST AT MDC. DO NOT CREATE OR INVENT PROGRAMS.
+   - For Associate in Arts (A.A.) programs, you MUST select from these actual MDC programs:
+     Accounting, Agriculture, Anthropology, Architecture, Area & Ethnic Studies, Art, Art Education, Atmospheric Science & Meteorology, Biology, Biotechnology, Building Construction, Business Administration, Chemistry, Computer Arts Animation, Computer Information Systems, Computer Science, Criminal Justice Administration, Dance, Dietetics, Drama, Drama Education, Economics, Engineering - Architectural, Engineering - Biomedical, Engineering - Chemical, Engineering - Civil, Engineering - Computer, Engineering - Electrical, Engineering - Geomatics (Surveying and Mapping), Engineering - Industrial, Engineering - Mechanical, Engineering - Ocean, English/Literature & English Education, Environmental Sciences, Exercise Science, Foreign Language, Forestry, Geology, Graphic or Commercial Arts, Health Services Administration, History, Hospitality Administration/Travel & Tourism, Interior Design, International Relations, Landscape Architecture, Mass Communications/Journalism, Mathematics, Music, Music Education, Philosophy, Physical Education Teaching & Coaching, Physics, Political Science, Pre-Bachelor of Arts, Pre-Law, Pre-Medical Science/Dentistry, Pre-Medical Technology, Pre-Nursing, Pre-Occupational Therapy, Pre-Optometry, Pre-Pharmacy, Pre-Physical Therapy, Pre-Veterinary Medicine, Psychology, Public Administration, Recreation, Religion, Social Work, Sociology, Speech Pathology & Audiology, Teaching (Elementary), Teaching (Exceptional Student Education), Teaching (Pre-Elementary/Early Childhood), Teaching (Secondary), Teaching Secondary (Biology), Teaching Secondary (Chemistry), Teaching Secondary (Earth/Space), Teaching Secondary (English/Foreign Languages), Teaching Secondary (Mathematics Education), Teaching Secondary (Physics), Teaching Secondary (Social Science), Teaching Secondary (Vocational: Business, Technical, Home)
+   
+   - For Associate in Science (A.S.) programs, you MUST select from these actual MDC programs:
+     Accounting Technology, Animation & Game Art, Applied Artificial Intelligence, Architectural Design and Construction Technology, Aviation Administration, Aviation Maintenance Management, Biomedical Engineering Technology, Biotechnology, Biotechnology - Bioinformatics, Biotechnology - Chemical Technology, Building Construction Technology, Business Administration, Business Intelligence Specialist, Civil Engineering Technology, Clinical Laboratory Science, Computer Crime Investigation, Computer Engineering Technology, Computer Information Technology, Computer Programming and Analysis - Business Application Programming, Computer Programming and Analysis - Internet of Things (IoT) Applications, Computer Programming and Analysis - Mobile Applications Development, Crime Scene Technology - Crime Scene Investigation, Crime Scene Technology - Forensic Science, Criminal Justice Technology, Culinary Arts Management, Cybersecurity, Database Technology - Oracle Database Administration, Dental Hygiene, Diagnostic Medical Sonography, Early Childhood Education, Early Childhood Education - Administrators, Early Childhood Education - Infant Toddler, Early Childhood Education - Preschool, Electronics Engineering Technology, Emergency Medical Services, Entrepreneurship, Fashion Design, Fashion Merchandising, Film Production Technology, Financial Services - Banking, Financial Services - Wealth Management, Fire Science Technology, Funeral Service Education, Game Development & Design, Graphic Design Technology, Graphic Internet Technology, Health Information Technology, Health Science - Health Services Management, Health Sciences, Histologic Technology, Hospitality & Tourism Management, Interior Design Technology, Landscape & Horticulture Technology, Marketing, Music Business - Management and Marketing, Music Business - Performance and Production, Networking Services Technology - Enterprise Cloud Computing, Networking Services Technology - Network Infrastructure, Nuclear Medicine Technology, Nursing - R.N. (all variants), Opticianry, Paralegal Studies - ABA Approved, Photographic Technology, Physical Therapist Assistant, Professional Pilot Technology, Radiation Therapy, Radio & Television Broadcast Programming, Radiography, Respiratory Care, Sign Language Interpretation, Social and Human Services - Addictions Studies, Social and Human Services - Generalist, Sport Management, Surgical Technology, Translation/Interpretation Studies, Transportation and Logistics, Veterinary Technology
+   
+   - SELECT THE CLOSEST RELATED PROGRAM: When choosing an MDC program for a career, you MUST select the program that is MOST CLOSELY RELATED to that specific career. For example:
+     * For "Mechanical Engineer" → Use "Associate in Arts in Engineering - Mechanical" (NOT generic Engineering)
+     * For "Nurse" → Use "Associate in Science in Nursing" (NOT Health Sciences)
+     * For "Architect" → Use "Associate in Arts in Architecture" or "Associate in Arts in Engineering - Architectural" (whichever is more appropriate)
+     * For "Computer Programmer" → Use "Associate in Science in Computer Programming and Analysis" (NOT generic Computer Science)
+     * For "Dental Hygienist" → Use "Associate in Science in Dental Hygiene"
+     * For "Criminal Justice" careers → Use "Associate in Science in Criminal Justice Technology" or "Associate in Arts in Criminal Justice Administration" (choose based on career path)
+   
+   - For ANY step with type 'degree', the 'name' field MUST contain the full, official program title EXACTLY as listed above, such as:
      * "Associate in Science in Nursing"
      * "Associate in Arts in Engineering - Mechanical"
-     * "Certificate in [Program Name]"
-     * "Bachelor of Science in [Program Name]"
-     Do not use generic names.
-   - If multiple MDC programs could lead to the same career, select the MOST DIRECT and EFFECTIVE pathway. Consider:
-     * Which program provides the fastest route to employment?
-     * Which program best prepares for required licensure/certifications?
-     * Which program offers the best transfer opportunities if needed?
-     * Can a certificate program serve as a stepping stone or entry point?
+     * "Associate in Science in Computer Programming and Analysis - Mobile Applications Development"
+     * "Certificate in [Program Name]" (only if MDC offers that certificate)
+     * "Bachelor of Science in [Program Name]" (only if MDC offers that bachelor's program)
+     DO NOT use generic names or create programs that don't exist.
+   
+   - If multiple MDC programs could lead to the same career, select the MOST CLOSELY RELATED and DIRECT pathway:
+     * Choose the program whose name and curriculum most directly match the career
+     * Prefer Associate in Science (A.S.) for technical/vocational careers that lead directly to employment
+     * Prefer Associate in Arts (A.A.) for transfer-oriented careers that require a bachelor's degree
+     * Consider which program provides the best preparation for required licensure/certifications
+     * When in doubt, choose the more specific program over the general one
 
 2. TRANSFER STEPS:
    - Include a transfer step ONLY if:
@@ -101,12 +110,13 @@ SPECIFIC REQUIREMENTS:
    - Include clear descriptions (1-2 sentences) explaining what each step entails and why it's necessary
    - When MDC offers a bachelor's program, prefer using it over transfer when it directly leads to the career
 
-EXAMPLES:
-- For Mechanical Engineer: A.A. in Engineering - Mechanical (MDC) -> Transfer to 4-year university -> B.S. in Mechanical Engineering -> Professional Engineering Experience -> FE Exam -> PE Exam -> Optional M.S. in Mechanical Engineering
-- For Architect: A.A. in Architecture/Design (MDC) -> Transfer to architecture school -> B.Arch -> Architectural Experience Program (AXP) -> A.R.E. (all divisions) -> Optional M.Arch
-- For Nurse: A.S. in Nursing (MDC) -> B.S.N. (MDC, if available) OR Transfer -> B.S.N. -> Clinical Experience -> NCLEX-RN -> Optional M.S.N.
-- For IT Professional: Certificate in Information Technology (MDC) -> A.S. in Information Systems Technology (MDC) -> B.S. in Information Systems Technology (MDC) -> Professional Experience -> Optional Certifications
-- For Medical Assistant: Certificate in Medical Assisting (MDC) -> Direct Employment -> Optional A.S. in Health Sciences for advancement
+EXAMPLES (using ACTUAL MDC programs):
+- For Mechanical Engineer: "Associate in Arts in Engineering - Mechanical" (MDC) -> Transfer to 4-year university -> B.S. in Mechanical Engineering -> Professional Engineering Experience -> FE Exam -> PE Exam -> Optional M.S. in Mechanical Engineering
+- For Architect: "Associate in Arts in Architecture" or "Associate in Arts in Engineering - Architectural" (MDC) -> Transfer to architecture school -> B.Arch -> Architectural Experience Program (AXP) -> A.R.E. (all divisions) -> Optional M.Arch
+- For Nurse: "Associate in Science in Nursing" (MDC) -> B.S.N. (MDC, if available) OR Transfer -> B.S.N. -> Clinical Experience -> NCLEX-RN -> Optional M.S.N.
+- For IT Professional: "Associate in Science in Computer Information Technology" or "Associate in Science in Computer Programming and Analysis" (MDC) -> B.S. in Information Systems Technology (MDC, if available) -> Professional Experience -> Optional Certifications
+- For Dental Hygienist: "Associate in Science in Dental Hygiene" (MDC) -> Direct Employment -> Licensure Exam -> Optional B.S. for advancement
+- For Computer Programmer: "Associate in Science in Computer Programming and Analysis - Mobile Applications Development" or "Associate in Science in Computer Programming and Analysis - Business Application Programming" (MDC) -> Transfer or B.S. -> Professional Experience
 
 You must only respond with a JSON object following the schema provided.`;
 
@@ -149,15 +159,19 @@ You must only respond with a JSON object following the schema provided.`;
 
     const userQuery = `Generate a comprehensive educational pathway for becoming a "${career}". 
 
-The pathway must include:
-- The BEST starting point from MDC: Associate of Science (A.S.), Associate of Arts (A.A.), Certificate Program, or Bachelor's Program (when MDC offers one)
-- Transfer to a 4-year university (ONLY if bachelor's degree is required AND MDC doesn't offer a bachelor's program in that field)
-- Bachelor's degree (if required - prefer MDC's bachelor's program if available)
-- Required professional experience/internships
-- All required licensure exams and certifications
-- Optional advanced degrees (M.S., Ph.D.) when relevant
+CRITICAL REQUIREMENTS:
+- You MUST select an MDC Associate in Arts (A.A.) or Associate in Science (A.S.) program that ACTUALLY EXISTS at MDC and is MOST CLOSELY RELATED to the career "${career}"
+- Use the exact program names from the list provided in the system instructions
+- Choose the program whose name and curriculum most directly match the career (e.g., for "Mechanical Engineer" use "Associate in Arts in Engineering - Mechanical", NOT a generic program)
+- The pathway must include:
+  * The BEST and MOST CLOSELY RELATED MDC program as the starting point (A.S., A.A., Certificate, or Bachelor's - only if MDC offers it)
+  * Transfer to a 4-year university (ONLY if bachelor's degree is required AND MDC doesn't offer a bachelor's program in that field)
+  * Bachelor's degree (if required - prefer MDC's bachelor's program if available)
+  * Required professional experience/internships
+  * All required licensure exams and certifications
+  * Optional advanced degrees (M.S., Ph.D.) when relevant
 
-Consider all MDC program types (A.S., A.A., Certificates, and Bachelor's) and select the most direct and effective pathway. When MDC offers a bachelor's degree that directly leads to the career, use it instead of transfer.`;
+Remember: Only use actual MDC programs that exist. Select the program that is MOST CLOSELY RELATED to the career "${career}".`;
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${genModel}:generateContent?key=${apiKey}`;
 
