@@ -1742,7 +1742,7 @@ export default function Home() {
   };
 
   const handleGeneratePathwayForCareer = async (career: string) => {
-    showLoading("Generating pathway...");
+    showLoading(`Generating pathway for ${career}...`);
     try {
       const generatedData = await callAPI(career);
       
@@ -1891,7 +1891,7 @@ export default function Home() {
           <>
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 gap-4">
               <h2 className="text-2xl font-bold text-gray-800">
-                {pathwayData.title}
+                {pathwayData.title.replace(/^(Educational\s+)?Pathway\s+to\s+becoming\s+(a\s+|an\s+)?/i, '')}
               </h2>
               <button
                 onClick={handleClearPathway}
@@ -2010,7 +2010,7 @@ export default function Home() {
               <div className="mt-8 flex justify-center">
                 <button
                   onClick={handleAddCareerClick}
-                  className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-md transition-colors"
+                  className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full shadow-md transition-colors"
                 >
                   <i className="fas fa-plus mr-2" />
                   Compare Another Career
@@ -2018,8 +2018,8 @@ export default function Home() {
               </div>
             )}
 
-            {/* Add Career Input */}
-            {showAddCareerInput && (
+            {/* Add Career Input - Only show if no comparison pathways exist yet */}
+            {showAddCareerInput && comparisonPathways.length === 0 && (
               <div className="mt-8 flex justify-center">
                 <div className="w-full max-w-md">
                   <div className="flex items-center space-x-2">
@@ -2182,7 +2182,7 @@ export default function Home() {
                   <div className="mt-8 flex justify-center">
                     <button
                       onClick={handleAddCareerClick}
-                      className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-md transition-colors"
+                      className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full shadow-md transition-colors"
                     >
                       <i className="fas fa-plus mr-2" />
                       Compare Another Career

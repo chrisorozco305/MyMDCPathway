@@ -131,7 +131,7 @@ You must only respond with a JSON object following the schema provided.`;
       properties: {
         title: {
           type: "STRING",
-          description: `Pathway to becoming a ${career}`,
+          description: `The career name only (e.g., "${career}"). Do not include "Educational Pathway to becoming a" or similar prefixes.`,
         },
         pathways: {
           type: "ARRAY",
