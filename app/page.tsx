@@ -77,9 +77,15 @@ interface PathwayStep {
   description: string;
 }
 
+interface PathwayOption {
+  title: string;
+  isPrimary: boolean;
+  steps: PathwayStep[];
+}
+
 interface PathwayData {
   title: string;
-  steps: PathwayStep[];
+  pathways: PathwayOption[];
 }
 
 // Mapping of MDC bachelor's programs to their exact URLs
@@ -375,8 +381,18 @@ function getMDCAssociateArtsProgramUrl(programName: string): string | null {
   }
 
   // Try to find an exact or partial match in the mapping
+  // But be more strict: don't match if subject contains words that strongly suggest it's an A.S. program
+  // (A.S. programs often have "Technology" in the name, which A.A. programs don't)
+  const asIndicators = ['technology', 'technician'];
+  const hasAsIndicator = asIndicators.some(indicator => subject.includes(indicator));
+  
   for (const [key, url] of Object.entries(MDC_ASSOCIATE_ARTS_URL_MAPPING)) {
-    if (subject.includes(key) || key.includes(subject)) {
+    // Exact match always works
+    if (subject === key) {
+      return url;
+    }
+    // Partial match only if subject doesn't have A.S. indicators
+    if (!hasAsIndicator && (subject.includes(key) || key.includes(subject))) {
       return url;
     }
   }
@@ -1230,16 +1246,17 @@ function getMDCProgramUrl(programName: string): string {
     return bachelorsUrl;
   }
 
+  // Check if it's an Associate in Science program FIRST (before A.A.) - use exact URL mapping
+  // This ensures A.S. programs don't get matched to A.A. programs
+  const associateScienceUrl = getMDCAssociateScienceProgramUrl(singleProgram);
+  if (associateScienceUrl) {
+    return associateScienceUrl;
+  }
+
   // Check if it's an Associate in Arts program - use exact URL mapping
   const associateArtsUrl = getMDCAssociateArtsProgramUrl(singleProgram);
   if (associateArtsUrl) {
     return associateArtsUrl;
-  }
-
-  // Check if it's an Associate in Science program - use exact URL mapping
-  const associateScienceUrl = getMDCAssociateScienceProgramUrl(singleProgram);
-  if (associateScienceUrl) {
-    return associateScienceUrl;
   }
 
   // For other programs (Certificates), try to generate URL from name
@@ -1295,6 +1312,7 @@ export default function Home() {
   } | null>(null);
   const [transferRecommendationsPopup, setTransferRecommendationsPopup] =
     useState<boolean>(false);
+  const [selectedPathwayIndex, setSelectedPathwayIndex] = useState<number>(0);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -1385,7 +1403,32 @@ export default function Home() {
 
     try {
       const generatedData = await callAPI(career);
-      setPathwayData(generatedData);
+      
+      // Handle backward compatibility: if old format (with "steps"), convert to new format
+      let pathwayDataToSet: PathwayData;
+      if ('steps' in generatedData && !('pathways' in generatedData)) {
+        // Old format - convert to new format
+        pathwayDataToSet = {
+          title: generatedData.title,
+          pathways: [{
+            title: generatedData.title,
+            isPrimary: true,
+            steps: generatedData.steps
+          }]
+        };
+      } else {
+        // New format
+        pathwayDataToSet = generatedData as PathwayData;
+      }
+      
+      setPathwayData(pathwayDataToSet);
+      // Set selected pathway to primary (or first if no primary)
+      if (pathwayDataToSet.pathways && pathwayDataToSet.pathways.length > 0) {
+        const primaryIndex = pathwayDataToSet.pathways.findIndex(
+          (p: PathwayOption) => p.isPrimary
+        );
+        setSelectedPathwayIndex(primaryIndex >= 0 ? primaryIndex : 0);
+      }
       setCertificationPopup(null); // Close popup when new pathway is generated
       setTransferRecommendationsPopup(false); // Close transfer popup when new pathway is generated
     } catch (error: any) {
@@ -1507,9 +1550,9 @@ export default function Home() {
 
       {/* Infographic Display Area */}
       <div id="pathway-display" className="p-6 md:p-8">
-        {pathwayData && (
+        {pathwayData && pathwayData.pathways && pathwayData.pathways.length > 0 && (
           <>
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-8 gap-4">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 gap-4">
               <h2 className="text-2xl font-bold text-gray-800">
                 {pathwayData.title}
               </h2>
@@ -1521,8 +1564,35 @@ export default function Home() {
               </button>
             </div>
 
+            {/* Pathway Tabs */}
+            {pathwayData.pathways.length > 1 && (
+              <div className="mb-6 border-b border-gray-200">
+                <nav className="flex space-x-1 overflow-x-auto" aria-label="Pathway Tabs">
+                  {pathwayData.pathways.map((pathway, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedPathwayIndex(index)}
+                      className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
+                        selectedPathwayIndex === index
+                          ? "border-blue-500 text-blue-600"
+                          : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      }`}
+                    >
+                      {pathway.isPrimary && (
+                        <span className="mr-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                          Recommended
+                        </span>
+                      )}
+                      {pathway.title}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            )}
+
+            {/* Selected Pathway Display */}
             <div className="flowchart-container">
-              {pathwayData.steps.map((step, stepIndex) => {
+              {pathwayData.pathways[selectedPathwayIndex].steps.map((step, stepIndex) => {
                 const stepTypeClass = `flowchart-step-${step.type}`;
                 const IconComponent = icons[step.type];
 

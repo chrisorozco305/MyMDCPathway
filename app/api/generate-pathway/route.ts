@@ -66,12 +66,14 @@ SPECIFIC REQUIREMENTS:
      * "Bachelor of Science in [Program Name]" (only if MDC offers that bachelor's program)
      DO NOT use generic names or create programs that don't exist.
    
-   - If multiple MDC programs could lead to the same career, select the MOST CLOSELY RELATED and DIRECT pathway:
-     * Choose the program whose name and curriculum most directly match the career
-     * Prefer Associate in Science (A.S.) for technical/vocational careers that lead directly to employment
-     * Prefer Associate in Arts (A.A.) for transfer-oriented careers that require a bachelor's degree
-     * Consider which program provides the best preparation for required licensure/certifications
-     * When in doubt, choose the more specific program over the general one
+   - MULTIPLE PATHWAY OPTIONS: When multiple MDC programs could lead to the same career, you MUST provide ALL viable alternative pathways:
+     * Generate separate pathways for each valid MDC program option (e.g., A.S. vs A.A., different specializations)
+     * Each alternative pathway should be a complete, valid route to the career
+     * Clearly indicate which pathway is the primary/recommended option
+     * Include pathways that offer different benefits (e.g., faster entry vs. more comprehensive preparation)
+     * For example, for "IT Professional": provide one pathway starting with "Associate in Science in Computer Information Technology" and another starting with "Associate in Science in Computer Programming and Analysis"
+     * For "Criminal Justice" careers: provide pathways for both "Associate in Science in Criminal Justice Technology" and "Associate in Arts in Criminal Justice Administration"
+     * When only one MDC program clearly leads to the career, provide just that one pathway
 
 2. TRANSFER STEPS:
    - Include a transfer step ONLY if:
@@ -127,51 +129,74 @@ You must only respond with a JSON object following the schema provided.`;
           type: "STRING",
           description: `Pathway to becoming a ${career}`,
         },
-        steps: {
+        pathways: {
           type: "ARRAY",
+          description: "Array of alternative pathways. Provide multiple pathways when different MDC programs can lead to the same career. If only one pathway exists, provide an array with one pathway.",
           items: {
             type: "OBJECT",
             properties: {
-              type: {
+              title: {
                 type: "STRING",
-                enum: ["degree", "transfer", "internship", "exam"],
+                description: "Title of this specific pathway (e.g., 'Pathway 1: A.S. in Computer Information Technology' or 'Pathway 2: A.A. in Computer Science')",
               },
-              level: {
-                type: "STRING",
-                description:
-                  "e.g., A.A. (MDC), B.S., M.S. (Optional), or type of step",
+              isPrimary: {
+                type: "BOOLEAN",
+                description: "True if this is the primary/recommended pathway, false otherwise",
               },
-              name: {
-                type: "STRING",
-                description: "Name of the degree, exam, or step",
-              },
-              description: {
-                type: "STRING",
-                description: "A 1-2 sentence description of this step.",
+              steps: {
+                type: "ARRAY",
+                items: {
+                  type: "OBJECT",
+                  properties: {
+                    type: {
+                      type: "STRING",
+                      enum: ["degree", "transfer", "internship", "exam"],
+                    },
+                    level: {
+                      type: "STRING",
+                      description:
+                        "e.g., A.A. (MDC), B.S., M.S. (Optional), or type of step",
+                    },
+                    name: {
+                      type: "STRING",
+                      description: "Name of the degree, exam, or step",
+                    },
+                    description: {
+                      type: "STRING",
+                      description: "A 1-2 sentence description of this step.",
+                    },
+                  },
+                  required: ["type", "level", "name", "description"],
+                },
               },
             },
-            required: ["type", "level", "name", "description"],
+            required: ["title", "isPrimary", "steps"],
           },
         },
       },
-      required: ["title", "steps"],
+      required: ["title", "pathways"],
     };
 
-    const userQuery = `Generate a comprehensive educational pathway for becoming a "${career}". 
+    const userQuery = `Generate comprehensive educational pathway(s) for becoming a "${career}". 
 
 CRITICAL REQUIREMENTS:
-- You MUST select an MDC Associate in Arts (A.A.) or Associate in Science (A.S.) program that ACTUALLY EXISTS at MDC and is MOST CLOSELY RELATED to the career "${career}"
+- You MUST provide MULTIPLE alternative pathways when different MDC programs can lead to the same career
+- For each pathway, select an MDC Associate in Arts (A.A.) or Associate in Science (A.S.) program that ACTUALLY EXISTS at MDC
 - Use the exact program names from the list provided in the system instructions
-- Choose the program whose name and curriculum most directly match the career (e.g., for "Mechanical Engineer" use "Associate in Arts in Engineering - Mechanical", NOT a generic program)
-- The pathway must include:
-  * The BEST and MOST CLOSELY RELATED MDC program as the starting point (A.S., A.A., Certificate, or Bachelor's - only if MDC offers it)
+- When multiple valid MDC programs exist for this career, create separate pathways for each:
+  * Example: For "IT Professional" - create one pathway with "Associate in Science in Computer Information Technology" and another with "Associate in Science in Computer Programming and Analysis"
+  * Example: For "Criminal Justice" - create one pathway with "Associate in Science in Criminal Justice Technology" and another with "Associate in Arts in Criminal Justice Administration"
+  * Mark the most direct/recommended pathway as primary (isPrimary: true)
+- Each pathway must include:
+  * The MDC program as the starting point (A.S., A.A., Certificate, or Bachelor's - only if MDC offers it)
   * Transfer to a 4-year university (ONLY if bachelor's degree is required AND MDC doesn't offer a bachelor's program in that field)
   * Bachelor's degree (if required - prefer MDC's bachelor's program if available)
   * Required professional experience/internships
   * All required licensure exams and certifications
   * Optional advanced degrees (M.S., Ph.D.) when relevant
+- If only one MDC program clearly leads to this career, provide just one pathway (but still in the pathways array)
 
-Remember: Only use actual MDC programs that exist. Select the program that is MOST CLOSELY RELATED to the career "${career}".`;
+Remember: Only use actual MDC programs that exist. Provide alternative routes when multiple programs are viable options for "${career}".`;
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${genModel}:generateContent?key=${apiKey}`;
 
